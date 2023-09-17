@@ -5,11 +5,8 @@ import UserForm from './components/UserForm';
 import React, { useState, useEffect } from "react";
 import UserCard from './components/Card';
 import Grid from "@mui/material/Grid";
-import { dark } from '@mui/material/styles/createPalette';
-import Paginator from './components/Paginator';
 import Pagination from '@mui/material/Pagination';
 const ITEMS_PER_PAGE = 6;
-let PageSize = 10;
 let START = 0
 let END = 6
 const initialFormData = {
@@ -43,11 +40,10 @@ function App() {
   };
 
   const handleSubmit = (data) => {
-    // Update the state with the submitted data
     console.log(data, users.length)
-    if (users.length % 6 == 0 && users.length>0) {
+    if (users.length % 6 == 0 && users.length > 0) {
       setCurrentPage(currentPage + 1)
-      setPage(page+1)
+      setPage(page + 1)
       handlePageChange(currentPage + 1)
     }
     setUsers([...users, data]);
@@ -81,10 +77,10 @@ function App() {
 
   const handleDelete = (id) => {
     console.log(users.length)
-    if (((users.length - 1) % 6) == 0 && users.length>1) {
+    if (((users.length - 1) % 6) == 0 && users.length > 1) {
       setCurrentPage(currentPage - 1)
       handlePageChange(currentPage - 1)
-      setPage(page-1)
+      setPage(page - 1)
     }
     const updatedUsers = users.filter((user) => user.id !== id);
     localStorage.setItem('users', JSON.stringify(updatedUsers));
@@ -108,16 +104,13 @@ function App() {
 
   const [screenWidth, setScreenWidth] = useState(window.innerWidth);
 
-  // Update the screenWidth state whenever the window is resized
   useEffect(() => {
     function handleResize() {
       setScreenWidth(window.innerWidth);
     }
 
-    // Add an event listener for the "resize" event
     window.addEventListener('resize', handleResize);
 
-    // Clean up the event listener when the component unmounts
     return () => {
       window.removeEventListener('resize', handleResize);
     };
@@ -125,8 +118,8 @@ function App() {
 
   const [currentPage, setCurrentPage] = useState(1);
 
-  const itemsPerPage = 6; // Change this to the desired number of items per page
-  const totalItems = users.length; // Change this to the total number of items
+  const itemsPerPage = 6;
+  const totalItems = users.length;
 
   const handlePageChange = (newPage) => {
     setCurrentPage(newPage);
@@ -146,7 +139,7 @@ function App() {
     END = 6 * (newPage)
     console.log(newPage, START, END)
     setUsersToDisplay(users.slice(START, END))
-    console.log(event,newPage)
+    console.log(event, newPage)
   };
 
   const startIndex = (page - 1) * itemsPerPage;
@@ -158,11 +151,11 @@ function App() {
       <div className="Body-content">
         <div className="top_div">
           <div className="left">
-            
-            {users.length==0?
-            <h3>No users to display </h3>
-            :
-            <h3>List of Users ({users.length})</h3>
+
+            {users.length == 0 ?
+              <h3>No users to display </h3>
+              :
+              <h3>List of Users ({users.length})</h3>
             }
           </div>
           <div className="right">
@@ -221,21 +214,12 @@ function App() {
             null
         }
 
-        {/* <div className='paginator'>
-          <Paginator
-            totalItems={totalItems}
-            itemsPerPage={itemsPerPage}
-            onPageChange={handlePageChange}
-
-          />
-        </div> */}
-
         <div className='paginator'>
-        <Pagination
-          count={Math.ceil(users.length/6)}
-          page={page}
-          onChange={handleChangePage}
-        />
+          <Pagination
+            count={Math.ceil(users.length / ITEMS_PER_PAGE)}
+            page={page}
+            onChange={handleChangePage}
+          />
         </div>
 
       </div>

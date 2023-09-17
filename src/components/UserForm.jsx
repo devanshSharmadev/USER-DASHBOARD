@@ -28,8 +28,8 @@ const initialFormData = {
 
 const UserForm = (props) => {
   const { open, onClose, onSubmit, type, data } = props;
-  const food=data.food
-  const gender=data.gender
+  const food = data.food;
+  const gender = data.gender;
   console.log(data);
   const [formData, setFormData] = useState(data);
   console.log(formData);
@@ -49,12 +49,12 @@ const UserForm = (props) => {
       onSubmit(updatedFormData);
       setFormData(initialFormData);
     }
-    onClose()
+    onClose();
   };
 
   useEffect(() => {
     // Update formData when data prop changes (e.g., when editing a user)
-    console.log(data)
+    console.log(data);
     if (data) {
       setFormData(data);
     }

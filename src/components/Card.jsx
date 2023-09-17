@@ -63,7 +63,7 @@ const UserCard = (props) => {
     <Card sx={{ minWidth: 275 }}>
       <div className="top_div">
         <div className="left">
-          <h3>{name?name:'NA'}</h3>
+          <h3>{name ? name : "NA"}</h3>
         </div>
         <div className={`right ${getAgeColor()}`}></div>
       </div>
@@ -74,16 +74,16 @@ const UserCard = (props) => {
           <b>Age:</b> {age}
         </p>
         <p>
-          <b>DOB:</b> {dob?dob:'NA'}
+          <b>DOB:</b> {dob ? dob : "NA"}
         </p>
         <p>
-          <b>Gender:</b> {gender?gender:'NA'}
+          <b>Gender:</b> {gender ? gender : "NA"}
         </p>
         <p>
-          <b>Food:</b> {food?food:'NA'}
+          <b>Food:</b> {food ? food : "NA"}
         </p>
         <p>
-          <b>Hobbies:</b> {hobbies?hobbies:'NA'}
+          <b>Hobbies:</b> {hobbies ? hobbies : "NA"}
         </p>
       </CardContent>
       <hr />
@@ -100,11 +100,7 @@ const UserCard = (props) => {
               justifyContent: "center",
             }}
           >
-            <Button
-              size="small"
-              color="error"
-              onClick={handleDeleteChild}
-            >
+            <Button size="small" color="error" onClick={handleDeleteChild}>
               <DeleteIcon />
             </Button>
           </Grid>
@@ -134,7 +130,7 @@ const UserCard = (props) => {
               justifyContent: "center",
             }}
           >
-            <Button size="small"  onClick={handleViewChild}>
+            <Button size="small" onClick={handleViewChild}>
               <RemoveRedEyeIcon />
             </Button>
           </Grid>
