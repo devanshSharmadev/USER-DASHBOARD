@@ -49,7 +49,7 @@ function App() {
       handlePageChange(currentPage + 1)
     }
     setUsers([...users, data]);
-
+    setUsersToDisplay(users.slice(START, END))
     setFirstTime(false)
   };
 
@@ -157,7 +157,7 @@ function App() {
           screenWidth > 912 ?
             <div className="card-container">
               <Grid container spacing={2}>
-                {usersToDisplay.map((item, index) => (
+                {users.map((item, index) => (
                   <Grid item xs={4}>
                     <UserCard key={index} id={item.id} name={item.name} age={item.age} dob={item.dob} gender={item.gender} food={item.food} hobbies={item.hobbies} handleDelete={handleDelete} handleView={handleView} handleEdit={handleEdit2} />
                   </Grid>
@@ -172,7 +172,7 @@ function App() {
           (screenWidth <= 912 && screenWidth > 590) ?
             <div className="card-container">
               <Grid container spacing={2}>
-                {usersToDisplay.map((item, index) => (
+                {users.map((item, index) => (
                   <Grid item xs={6}>
                     <UserCard key={index} id={item.id} name={item.name} age={item.age} dob={item.dob} gender={item.gender} food={item.food} hobbies={item.hobbies} handleDelete={handleDelete} handleView={handleView} handleEdit={handleEdit2} />
                   </Grid>
@@ -187,7 +187,7 @@ function App() {
           screenWidth <= 590 ?
             <div className="card-container">
               <Grid container spacing={2}>
-                {usersToDisplay.map((item, index) => (
+                {users.map((item, index) => (
                   <Grid item xs={12}>
                     <UserCard key={index} id={item.id} name={item.name} age={item.age} dob={item.dob} gender={item.gender} food={item.food} hobbies={item.hobbies} handleDelete={handleDelete} handleView={handleView} handleEdit={handleEdit2} />
                   </Grid>
@@ -197,14 +197,16 @@ function App() {
             :
             null
         }
-        <div className='paginator'>
+
+        
+        {/* <div className='paginator'>
           <Paginator
             totalItems={totalItems}
             itemsPerPage={itemsPerPage}
             onPageChange={handlePageChange}
 
           />
-        </div>
+        </div> */}
 
       </div>
     </div>
