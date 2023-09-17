@@ -1,0 +1,77 @@
+* {
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
+  }
+  
+  body {
+    background-color: #d2dbdd;
+  }
+  
+  .container {
+    display: flex;
+  }
+  
+  .dynamic-element {
+    flex: 1; /* Equal width for all elements */
+    padding: 30px;
+  }
+  
+  .top_div {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 16px;
+  }
+  
+  .left {
+    flex: 1; /* Take up all available space on the left */
+  }
+  
+  .right {
+    margin-left: 20px; /* Add some margin to separate the Avatar from the text */
+    margin-right: 8px;
+  }
+  
+  .colored-dot-green {
+    width: 20px; /* Set the width of the dot */
+    height: 20px; /* Set the height of the dot */
+    background-color: green; /* Set the desired color (e.g., red) */
+    border-radius: 50%; /* Make the element a circle */
+  }
+  
+  .colored-dot-purple {
+    width: 20px; /* Set the width of the dot */
+    height: 20px; /* Set the height of the dot */
+    background-color: purple; /* Set the desired color (e.g., red) */
+    border-radius: 50%; /* Make the element a circle */
+  }
+  
+  .colored-dot-orange {
+    width: 20px; /* Set the width of the dot */
+    height: 20px; /* Set the height of the dot */
+    background-color: orange; /* Set the desired color (e.g., red) */
+    border-radius: 50%; /* Make the element a circle */
+  }
+  
+  .card-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    margin: 24px;
+  }
+  
+  .card {
+    width: calc(33.33% - 10px); /* Adjust the width as needed */
+    margin-bottom: 20px; /* Adjust the margin as needed */
+    margin-left: 20px;
+    margin-right: 20px;
+  }
+
+  .paginator{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  

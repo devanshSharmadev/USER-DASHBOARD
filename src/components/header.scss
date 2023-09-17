@@ -1,0 +1,38 @@
+.main_div {
+    background-color: white;
+    height: 50px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  
+    h2 {
+      padding-left: 16px;
+      font-family: 'Quicksand', sans-serif;
+      font-size: 24px;
+      font-weight: bold;
+      color: #353b48;
+    }
+  
+    .left {
+      flex: 1; /* Take up all available space on the left */
+    }
+  
+    .right {
+      margin-left: 20px; /* Add some margin to separate the Avatar from the text */
+      margin-right: 8px;
+    }
+  
+    label {
+      font-size: 16px; /* Set the font size as desired */
+      margin-right: 10px; /* Adjust the spacing between the label and input */
+  
+      input[type="date"] {
+        width: 200px; /* Set the width of the input field */
+        padding: 5px; /* Add some padding for better appearance */
+        border: 1px solid #ccc; /* Add a border for the input field */
+        border-radius: 4px; /* Add rounded corners for the input field */
+        font-size: 16px; /* Set the font size as desired */
+      }
+    }
+  }
+  
