@@ -81,7 +81,7 @@ function App() {
 
   const handleDelete = (id) => {
     console.log(users.length)
-    if (((users.length - 1) % 6) == 0) {
+    if (((users.length - 1) % 6) == 0 && users.length>1) {
       setCurrentPage(currentPage - 1)
       handlePageChange(currentPage - 1)
       setPage(page-1)
@@ -158,7 +158,12 @@ function App() {
       <div className="Body-content">
         <div className="top_div">
           <div className="left">
-            <h3>LIST OF USERS</h3>
+            
+            {users.length==0?
+            <h3>No users to display </h3>
+            :
+            <h3>List of Users ({users.length})</h3>
+            }
           </div>
           <div className="right">
             <Button variant="contained" color="primary" onClick={() => handleOpenDialog("CREATE")}>
@@ -215,7 +220,6 @@ function App() {
             :
             null
         }
-
 
         {/* <div className='paginator'>
           <Paginator

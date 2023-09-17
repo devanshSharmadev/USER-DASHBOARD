@@ -63,7 +63,7 @@ const UserCard = (props) => {
     <Card sx={{ minWidth: 275 }}>
       <div className="top_div">
         <div className="left">
-          <h3>{name}</h3>
+          <h3>{name?name:'NA'}</h3>
         </div>
         <div className={`right ${getAgeColor()}`}></div>
       </div>
@@ -74,16 +74,16 @@ const UserCard = (props) => {
           <b>Age:</b> {age}
         </p>
         <p>
-          <b>DOB:</b> {dob}
+          <b>DOB:</b> {dob?dob:'NA'}
         </p>
         <p>
-          <b>Gender:</b> {gender}
+          <b>Gender:</b> {gender?gender:'NA'}
         </p>
         <p>
-          <b>Food:</b> {food}
+          <b>Food:</b> {food?food:'NA'}
         </p>
         <p>
-          <b>Hobbies:</b> {hobbies}
+          <b>Hobbies:</b> {hobbies?hobbies:'NA'}
         </p>
       </CardContent>
       <hr />
