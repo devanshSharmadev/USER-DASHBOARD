@@ -7,6 +7,7 @@ import UserCard from './components/Card';
 import Grid from "@mui/material/Grid";
 import { dark } from '@mui/material/styles/createPalette';
 import Paginator from './components/Paginator';
+import Pagination from '@mui/material/Pagination';
 const ITEMS_PER_PAGE = 6;
 let PageSize = 10;
 let START = 0
@@ -44,8 +45,9 @@ function App() {
   const handleSubmit = (data) => {
     // Update the state with the submitted data
     console.log(data, users.length)
-    if (users.length % 6 == 0) {
+    if (users.length % 6 == 0 && users.length>0) {
       setCurrentPage(currentPage + 1)
+      setPage(page+1)
       handlePageChange(currentPage + 1)
     }
     setUsers([...users, data]);
@@ -79,9 +81,10 @@ function App() {
 
   const handleDelete = (id) => {
     console.log(users.length)
-    if ((users.length - 1 % 6) == 0) {
+    if (((users.length - 1) % 6) == 0) {
       setCurrentPage(currentPage - 1)
       handlePageChange(currentPage - 1)
+      setPage(page-1)
     }
     const updatedUsers = users.filter((user) => user.id !== id);
     localStorage.setItem('users', JSON.stringify(updatedUsers));
@@ -134,6 +137,21 @@ function App() {
     setUsersToDisplay(users.slice(START, END))
   };
 
+
+  const [page, setPage] = useState(1);
+
+  const handleChangePage = (event, newPage) => {
+    setPage(newPage);
+    START = 6 * (newPage - 1)
+    END = 6 * (newPage)
+    console.log(newPage, START, END)
+    setUsersToDisplay(users.slice(START, END))
+    console.log(event,newPage)
+  };
+
+  const startIndex = (page - 1) * itemsPerPage;
+  const endIndex = startIndex + itemsPerPage;
+
   return (
     <div className="App">
       <Header />
@@ -157,7 +175,7 @@ function App() {
           screenWidth > 912 ?
             <div className="card-container">
               <Grid container spacing={2}>
-                {users.map((item, index) => (
+                {usersToDisplay.map((item, index) => (
                   <Grid item xs={4}>
                     <UserCard key={index} id={item.id} name={item.name} age={item.age} dob={item.dob} gender={item.gender} food={item.food} hobbies={item.hobbies} handleDelete={handleDelete} handleView={handleView} handleEdit={handleEdit2} />
                   </Grid>
@@ -172,7 +190,7 @@ function App() {
           (screenWidth <= 912 && screenWidth > 590) ?
             <div className="card-container">
               <Grid container spacing={2}>
-                {users.map((item, index) => (
+                {usersToDisplay.map((item, index) => (
                   <Grid item xs={6}>
                     <UserCard key={index} id={item.id} name={item.name} age={item.age} dob={item.dob} gender={item.gender} food={item.food} hobbies={item.hobbies} handleDelete={handleDelete} handleView={handleView} handleEdit={handleEdit2} />
                   </Grid>
@@ -187,7 +205,7 @@ function App() {
           screenWidth <= 590 ?
             <div className="card-container">
               <Grid container spacing={2}>
-                {users.map((item, index) => (
+                {usersToDisplay.map((item, index) => (
                   <Grid item xs={12}>
                     <UserCard key={index} id={item.id} name={item.name} age={item.age} dob={item.dob} gender={item.gender} food={item.food} hobbies={item.hobbies} handleDelete={handleDelete} handleView={handleView} handleEdit={handleEdit2} />
                   </Grid>
@@ -198,7 +216,7 @@ function App() {
             null
         }
 
-        
+
         {/* <div className='paginator'>
           <Paginator
             totalItems={totalItems}
@@ -207,6 +225,14 @@ function App() {
 
           />
         </div> */}
+
+        <div className='paginator'>
+        <Pagination
+          count={Math.ceil(users.length/6)}
+          page={page}
+          onChange={handleChangePage}
+        />
+        </div>
 
       </div>
     </div>
