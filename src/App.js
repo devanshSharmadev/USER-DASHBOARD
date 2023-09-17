@@ -16,8 +16,8 @@ const initialFormData = {
   name: "",
   age: 0,
   dob: "",
-  gender: "male",
-  food: "pizza",
+  gender: "",
+  food: "",
   hobbies: "",
 };
 function App() {

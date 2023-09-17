@@ -21,13 +21,15 @@ const initialFormData = {
   name: "",
   age: 0,
   dob: "",
-  gender: "male",
-  food: "pizza",
+  gender: "",
+  food: "",
   hobbies: "",
 };
 
 const UserForm = (props) => {
   const { open, onClose, onSubmit, type, data } = props;
+  const food=data.food
+  const gender=data.gender
   console.log(data);
   const [formData, setFormData] = useState(data);
   console.log(formData);
@@ -52,6 +54,7 @@ const UserForm = (props) => {
 
   useEffect(() => {
     // Update formData when data prop changes (e.g., when editing a user)
+    console.log(data)
     if (data) {
       setFormData(data);
     }
@@ -108,7 +111,7 @@ const UserForm = (props) => {
                 row
                 aria-labelledby="demo-row-radio-buttons-group-label"
                 name="gender"
-                value={formData.gender}
+                value={formData.gender || gender}
                 onChange={handleInputChange}
                 disabled={type === "VIEW"}
               >
@@ -134,7 +137,7 @@ const UserForm = (props) => {
                 <Select
                   labelId="demo-simple-select-label"
                   id="demo-simple-select"
-                  value={formData.food}
+                  value={formData.food || food}
                   onChange={handleInputChange}
                   name="food"
                   disabled={type === "VIEW"}

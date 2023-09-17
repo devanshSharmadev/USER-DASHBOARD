@@ -102,7 +102,6 @@ const UserCard = (props) => {
           >
             <Button
               size="small"
-              variant="contained"
               color="error"
               onClick={handleDeleteChild}
             >
@@ -120,7 +119,7 @@ const UserCard = (props) => {
               justifyContent: "center",
             }}
           >
-            <Button size="small" variant="contained" onClick={handleEditChild}>
+            <Button size="small" onClick={handleEditChild}>
               <EditIcon />
             </Button>
           </Grid>
@@ -135,7 +134,7 @@ const UserCard = (props) => {
               justifyContent: "center",
             }}
           >
-            <Button size="small" variant="contained" onClick={handleViewChild}>
+            <Button size="small"  onClick={handleViewChild}>
               <RemoveRedEyeIcon />
             </Button>
           </Grid>
